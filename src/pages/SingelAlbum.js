@@ -1,5 +1,8 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+
 
 function SingelAlbum() {
   const { albumId } = useParams();
@@ -24,9 +27,16 @@ function SingelAlbum() {
       <br />
       <h2>album {albumId}</h2>
       <h3 className="album">{album && album.title}</h3>
-      {photos && photos.map((x, idx)=><img key={idx} src={x.thumbnailUrl} width="70px" />)}
-    <br />
-    <Link to={'/dashboard/albums'} className='btn'>back to all albums</Link>
+      <Carousel autoPlay axis="vertical"  infiniteLoop>
+        {photos &&
+          photos.map((x, idx) => (
+            <img key={idx} className="legend" src={x.thumbnailUrl} width="500px" />
+          ))}
+      </Carousel>
+      <br />
+      <Link to={"/dashboard/albums"} className="btn">
+        back to all albums
+      </Link>
     </div>
   );
 }

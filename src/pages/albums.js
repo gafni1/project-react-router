@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useLocation, Link, Outlet, NavLink, Navigate, useNavigate, useParams } from 'react-router-dom';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+
 
 const Albums = () => {
 
