@@ -29,7 +29,7 @@ function SingelAlbum() {
       <h2>album {albumId}</h2>
       <h3 className="album">{album && album.title}</h3>
       <br />
-       <Carousel style={{width:"80%"}}>
+       <Carousel>
              {photos &&
           photos.map((x, idx) => (
             <div>
