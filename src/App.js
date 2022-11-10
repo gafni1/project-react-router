@@ -1,5 +1,4 @@
 import Home from "./pages/Home";
-import About from "./pages/About";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Error from "./pages/Error";
@@ -8,8 +7,6 @@ import { useState } from "react";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./pages/protectedRoute";
-import Navbar from "./pages/components/stayledNavbar";
-import Navbarregistered from "./pages/components/stayledNavbarregistered";
 import Info from "./pages/info";
 import Todos from "./pages/todos";
 import Posts from "./pages/posts";
@@ -26,13 +23,11 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
-          <Route path="About" element={<About />} />
           <Route path="login" element={<Login setUser={setUser}></Login>} />
           <Route
             path="dashboard"
             element={
               <ProtectedRoute user={user}>
-                <Navbarregistered />
                 <Dashboard user={user} />
               </ProtectedRoute>
             }
