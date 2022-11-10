@@ -1,5 +1,6 @@
 import { Link, Outlet, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+// import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
@@ -27,11 +28,15 @@ function SingelAlbum() {
       <br />
       <h2>album {albumId}</h2>
       <h3 className="album">{album && album.title}</h3>
-      <Carousel autoPlay axis="vertical"  infiniteLoop>
-        {photos &&
+      <br />
+       <Carousel style={{width:"80%"}}>
+             {photos &&
           photos.map((x, idx) => (
-            <img key={idx} className="legend" src={x.thumbnailUrl} width="500px" />
-          ))}
+            <div>
+            <h5 className="albumId">{x.title}</h5>
+            <img loading="lazy"  key={idx} src={x.thumbnailUrl} style={{width:"80%"}} />
+         </div> 
+         ))}
       </Carousel>
       <br />
       <Link to={"/dashboard/albums"} className="btn">
